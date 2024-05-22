@@ -96,7 +96,7 @@ export class AccessService {
     req.setConditions(new ConditionsProxy(userAbilities, ability.action, ability.subject));
 
     // If no relevant rules with conditions or no subject hook exists check against subject class
-    if (!relevantRules.every((rule) => rule.conditions) || !ability.subjectHook) {
+    if (!relevantRules.every((rule) => rule.conditions) && !ability.subjectHook) {
       return userAbilities.can(ability.action, ability.subject);
     }
 
